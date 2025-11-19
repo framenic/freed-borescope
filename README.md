@@ -12,7 +12,7 @@ I bought a borescope from one the famous web marketplaces that can be connected 
 <img width="140" height="155" alt="immagine" src="https://github.com/user-attachments/assets/546d4848-8ee6-42bb-88a6-53644ed8369b" />
 
 
-Initially i hoped it was a UVC video device, so I could use it connected to a smartphone via USB OTG and installing any app that can use a UVC camera. Instead, it can only be used with a specific app (called USB VIEW), which leaves me with serious doubts about its security and future availability. 
+Initially i hoped it was a UVC video device, so I could use it connected to a smartphone via USB OTG and installing any app that can use a UVC camera. Instead, it can only be used with a specific app (called USB-VIEW), which gives me with serious doubts about its security and future availability. 
 
 <img width="125" height="300" alt="immagine" src="https://github.com/user-attachments/assets/ec6d7270-f478-4d61-aa9b-f026a528b29d" />
 <img width="125" height="300" alt="immagine" src="https://github.com/user-attachments/assets/2f380919-63e9-415c-a3f7-242562ebe4c8" />
@@ -76,7 +76,7 @@ In order to reassemble a compelte frame:
  - Frame completion is detected when a fragment with frame flag = 2 arrives, and the buffer length matches frame_size.
 
 ## UDP Port 50000 – Remote Event Detection
-Port 50000 is used by the client to send commands to the server. Coomands consists in a "SETCMD xxxx" request from the client and a "RETCMD xxxx" answer from the server. The protocol is very similar to the one described in one of the previous works. I don't know if the commands are exacly the same or not, but the only practical application in my case is for getting the event "snapshot button pressed" on the borescope. So I just analyzed and implemented this command.
+Port 50000 is used by the client to send commands to the server. Commands consist in "SETCMD xxxx" requests from the client and "RETCMD xxxx" answers from the server. The protocol is very similar to the one described in one of the previous works. I don't know if the commands are exacly the same or not, but the only practical application in my case is for getting the event "snapshot button pressed" on the borescope. So I just analyzed and implemented this command.
 
 ### Packets:
 
