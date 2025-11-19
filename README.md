@@ -1,14 +1,13 @@
-This repository contains:
+This repository contains a python program that can be used to show the video output of a borescope on a PC (tested under Linux). It uses opencv and can save a frame by pressing 's' on keyboard or the snapshot button on the borescope.
 
-- A python script that can be used to show the video output of a borescope in a PC (tested under Linux). It uses opencv and can save a frame by pressing 's' on keyboard or the snapshot button on the borescope.
-- An android app that can show the video output on a smartphone. Images can be saved by pressing a button in the app or the snapshot button on the borescope.
+For the android app see https://github.com/framenic/freed-borescope-view
 
-<img width="340" height="450" alt="immagine" src="https://github.com/user-attachments/assets/86e2d729-4ed0-440a-8ac6-416c4da75909" />                          <img width="225" height="450" alt="immagine" src="https://github.com/user-attachments/assets/dae2bed3-bba4-49ce-91b9-db1f24af71f5" />
+<img align='center' width="500" height="650" alt="immagine" src="https://github.com/user-attachments/assets/86e2d729-4ed0-440a-8ac6-416c4da75909" />                          
 
 
 
 # Introduction
-I needed a borescope, and a took a device from one the famouse web marketplaces that uses USB connection. It doesn't have any indication of the manufacturer and it is sold as J103-OTG model (also J106-OTG and J108 OTG). I later discovered, while analyzing network packets, that the manufacturer could be Shenzen Molink Technology.
+I bought a borescope from one the famous web marketplaces that can be connected to a phone by USB. It doesn't have any indication of the manufacturer and it is sold as J103-OTG model (also J106-OTG and J108 OTG). I later discovered, while analyzing network packets, that the manufacturer could be Shenzen Molink Technology.
 
 <img width="140" height="155" alt="immagine" src="https://github.com/user-attachments/assets/546d4848-8ee6-42bb-88a6-53644ed8369b" />
 
