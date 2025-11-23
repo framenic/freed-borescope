@@ -1,13 +1,13 @@
 This repository contains a python program that can be used to show the video output of a borescope on a PC (tested under Linux). It uses opencv and can save a frame by pressing 's' on keyboard or the snapshot button on the borescope.
 
-For the android app see https://github.com/framenic/freed-borescope-view
+This program will **not** work on any borescope, it works on my specific model, and possibly on others that use the same network protocol. I wrote it manly to understand and test the protocol before writing an Android app (https://github.com/framenic/freed-borescope-view).
 
 <img align='center' width="500" height="650" alt="immagine" src="https://github.com/user-attachments/assets/86e2d729-4ed0-440a-8ac6-416c4da75909" />                          
 
 
 
 # Introduction
-I bought a borescope from one the famous web marketplaces that can be connected to a phone by USB. It doesn't have any indication of the manufacturer and it is sold as J103-OTG model (also J106-OTG and J108 OTG). I later discovered, while analyzing network packets, that the manufacturer could be Shenzen Molink Technology.
+I bought a borescope from one the famous web marketplaces, which can be connected to a phone by USB. It doesn't have any indication of the manufacturer and it is sold as J103-OTG model (also J106-OTG and J108 OTG). I later discovered, while analyzing network packets, that the manufacturer could be Shenzen Molink Technology.
 
 <img width="140" height="155" alt="immagine" src="https://github.com/user-attachments/assets/546d4848-8ee6-42bb-88a6-53644ed8369b" />
 
@@ -18,7 +18,7 @@ Initially i hoped it was a UVC video device, so I could use it connected to a sm
 <img width="125" height="300" alt="immagine" src="https://github.com/user-attachments/assets/2f380919-63e9-415c-a3f7-242562ebe4c8" />
 <img width="125" height="300" alt="immagine" src="https://github.com/user-attachments/assets/7aee4d7d-6400-408a-9b79-265fbc32b6ef" />
 
-Connecting it to a PC does not result in a camera device, so I started investigating. Linux reveals that the USB device is actually a ethernet controller (RTL8152) and that it get an IP address through DHCP as soon as it is connected (192.168.10.100).
+Connecting it to a PC does not result in a camera device, so I started investigating. Linux reveals that the USB device is actually an ethernet controller (RTL8152) and that it get an IP address through DHCP as soon as it is connected (192.168.10.100).
 
 <img width="758" height="168" alt="immagine" src="https://github.com/user-attachments/assets/26cf503a-ad8e-4d6c-9755-4c7960a20034" />
 
@@ -28,18 +28,18 @@ Wireshark shows a continuos ping activity coming from 192.168.10.123, which must
 
 
 # Useful previous works
-Armed with this information I discovered interesting previous works. They mainly target a wifi borescope, but the protocol described and the architecture are quite similar.
+Armed with this information I discovered interesting previous works. They mainly target a wifi borescope, but the protocol described and the architecture have some similarities.
 
 - https://n8henrie.com/2019/02/reverse-engineering-my-wifi-endoscope-part-1/
 - https://mplough.github.io/2019/12/14/borescope.html
 - https://github.com/mkarr/boroscope_stream_fixer
 - https://github.com/mentalburden/Nidage-Borescope-Reversing
 
-While these are very interesting projects, none of them is directly applicable to my boroscope. Moreover I wanted a practical way to use the borescope directly on a PC and a smartphone application that i could trust.
-My work starts; it is time to reverse the network protocol of my borescope.
+While these are very interesting projects, none of the network protocol described is directly applicable to my boroscope. Moreover I wanted a practical way to use the borescope directly on a PC and a smartphone application that i could trust.
+My work starts; it is time to reverse the network protocol of the borescope.
 
 # Network protocol
-In the following description, the smartphone application is the **client** while the borescope is the **server**.
+These are the results of the analysis of the network traffic between the smartphoen applicatio and the borescope. In the following description, the smartphone application is the **client** while the borescope is the **server**.
 
 The server has two open UDP ports: 8030 and 50000. They can be easily found using *nmap*, but also tracing the traffic between the USB VIEW app and the boroscope.
 None of them provide data (i.e. the video stream) directly when connected, but specific commands must be sent by the client in order to get the video stream.
